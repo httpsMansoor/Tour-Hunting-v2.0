@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react";
 import axios from "../../../lib/axios";
+import SubNavbar from "./SubNavbar";
 
-const TABS = ["PILGRIMAGE", "TRAVEL", "TOURS"];
+//const TABS = ["PILGRIMAGE", "TRAVEL", "TOURS"];
 
 export default function Hero({ onResults }) {
-  const [activeTab, setActiveTab] = useState("PILGRIMAGE");
+  const [activeTab, setActiveTab] = useState("./");
 
   // Filter state
   const [name, setName] = useState("");
@@ -15,8 +16,8 @@ export default function Hero({ onResults }) {
   const [maxPrice, setMaxPrice] = useState("");
   const [ratingGte, setRatingGte] = useState("");
   const [ratingLte, setRatingLte] = useState("");
-  const [facility, setFacility] = useState("");
   const [category, setCategory] = useState("");
+  const [facility, setFacility] = useState("");
 
   // Dropdown options
   const [facilityOptions, setFacilityOptions] = useState([]);
@@ -69,22 +70,19 @@ export default function Hero({ onResults }) {
       <div className="relative z-20 text-white text-center max-w-5xl mx-auto w-full px-4">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">A Life Changing Journey</h1>
         <p className="text-lg mb-6">Embark on a journey that touches your soul and changes your story.</p>
-        <div className="flex justify-center space-x-4 mb-6">
-          {TABS.map(tab => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-md text-sm font-medium ${
-                activeTab === tab ? "bg-blue-600" : "bg-white text-blue-600"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+        
+        {/* SubNavbar goes here */}
+        <SubNavbar
+          categoryOptions={categoryOptions}
+          facilityOptions={facilityOptions}
+          category={category}
+          setCategory={setCategory}
+          facility={facility}
+          setFacility={setFacility}
+        />
 
         {/* Filter Inputs */}
-        <div className="bg-white bg-opacity-90 rounded-xl shadow-lg p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-gray-800">
+        {/* <div className="bg-white bg-opacity-90 rounded-xl shadow-lg p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-gray-800">
           <input
             type="text"
             placeholder="Name"
@@ -149,7 +147,7 @@ export default function Hero({ onResults }) {
               <option key={c} value={c}>{c}</option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         <div className="mt-4">
           <button
