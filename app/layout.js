@@ -1,5 +1,5 @@
 // app/layout.js
-
+import { Analytics } from "@vercel/analytics/next"
 import './globals.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
