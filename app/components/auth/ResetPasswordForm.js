@@ -12,7 +12,7 @@ export default function ResetPasswordForm() {
     e.preventDefault()
     setLoading(true)
     try {
-      await axios.post('/accounts/send-reset-password-link/', { email })
+      await axios.post('/api/accounts/send-reset-password-link/', { email })
       toast.success('Reset link sent! Please check your email.')
       setEmail('')
     } catch (err) {
